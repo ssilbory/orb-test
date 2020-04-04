@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  nirmata: nirmata/nirmata@dev:cleanup
+  nirmata: nirmata/nirmata-test@2.9.1
 jobs:
 
   build:
@@ -10,46 +10,29 @@ jobs:
     steps:
       - checkout
 
-      - nirmata/add_command:
-          name: "Create app in Catalog" 
+      - add_catlog_app_command:
+          name: "Create app in Catalog"
           app_name: "circlecitest1"
           yaml_file: "nginx.yml"
           nirmata_server: "nirmata.io"
+          catalog : "circlecitest"
 
-      - nirmata/deploy_command: 
+      - nirmata/deploy_command:
           name: "Deploy app"
           app_name: "circlecitest1"
           app_name_deploy: "circlecitest1"
           nirmata_server: "nirmata.io"
-          env_name: "demo3"
-          env_id: "838db06-c8cb-46c8-b443-d1cb1042ba3d"
-
-      - nirmata/add_deploy_command: 
-          name: "Add app to catalog and deploy app" 
-          app_name: "circlecitest2"
-          yaml_file: "nginx.yml"
-          nirmata_server: "nirmata.io"
-          env_name: "demo3"
-          env_id: "838db06-c8cb-46c8-b443-d1cb1042ba3d"
+          env_name: "circle-demo"
 
       - run:
           name: "Time to check the Nirmata UI"
-          command: sleep 60 
+          command: sleep 60
 
-      - nirmata/delete_catalog_app_command: 
-          name: "Delete 1st app from catalog" 
+      - nirmata/delete_catalog_app_command:
+          name: "Delete app from catalog"
           app_name: "circlecitest1"
           nirmata_server: "nirmata.io"
-      - nirmata/delete_deployed_app_command: 
-          name: "Delete 1st deployed app" 
+      - nirmata/delete_deployed_app_command:
+          name: "Delete deployed app"
           app_name: "circlecitest1"
-          nirmata_server: "nirmata.io"
-
-      - nirmata/delete_catalog_app_command: 
-          name: "Delete 2nd app from catalog" 
-          app_name: "circlecitest2"
-          nirmata_server: "nirmata.io"
-      - nirmata/delete_deployed_app_command: 
-          name: "Delete 2nd deployed app" 
-          app_name: "circlecitest2"
           nirmata_server: "nirmata.io"
