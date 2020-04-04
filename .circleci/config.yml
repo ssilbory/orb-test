@@ -23,6 +23,8 @@ jobs:
       - nirmata/delete_catalog_app_command:
           app_name: "circlecitest1"
           nirmata_server: "nirmata.io"
+          catalog : "circlecitest"
       - nirmata/delete_deployed_app_command:
           app_name: "circlecitest1"
           nirmata_server: "nirmata.io"
+          env_name: "circle-demo"
