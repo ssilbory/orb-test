@@ -8,26 +8,21 @@ jobs:
     steps:
       - checkout
       - nirmata/add_catlog_app_command:
-          name: "Create app in Catalog"
           app_name: "circlecitest1"
           yaml_file: "nginx.yml"
           nirmata_server: "nirmata.io"
           catalog : "circlecitest"
       - nirmata/deploy_command:
-          name: "Deploy app"
           app_name: "circlecitest1"
           app_name_deploy: "circlecitest1"
           nirmata_server: "nirmata.io"
           env_name: "circle-demo"
           catalog : "circlecitest"
       - run:
-          name: "Time to check the Nirmata UI"
           command: sleep 60
       - nirmata/delete_catalog_app_command:
-          name: "Delete app from catalog"
           app_name: "circlecitest1"
           nirmata_server: "nirmata.io"
       - nirmata/delete_deployed_app_command:
-          name: "Delete deployed app"
           app_name: "circlecitest1"
           nirmata_server: "nirmata.io"
