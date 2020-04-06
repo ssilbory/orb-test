@@ -12,8 +12,6 @@ jobs:
           yaml_file: "nginx.yml"
           nirmata_server: "nirmata.io"
           catalog : "circlecitest"
-      - run:
-          command: sleep 30   
       - nirmata/deploy_command:
           app_name: "circlecitest1"
           app_name_deploy: "circlecitest1"
