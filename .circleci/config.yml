@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  nirmata: nirmata/nirmata-test@2.9.7
+  nirmata: nirmata/nirmata-test@2.9.8
 jobs:
   build:
     docker:
