@@ -19,7 +19,7 @@ jobs:
           env_name: "circle-demo"
           catalog : "circlecitest"
       - run:
-          command: sleep 30    
+          command: sleep 90    
       - nirmata/delete_catalog_app_command:
           app_name: "circlecitest1"
           nirmata_server: "nirmata.io"
