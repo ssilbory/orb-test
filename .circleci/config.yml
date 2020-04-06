@@ -19,7 +19,9 @@ jobs:
           env_name: "circle-demo"
           catalog : "circlecitest"
       - run:
-          command: echo $NIRMATA_API_KEY $api_key
+          command: echo $NIRMATA_API_KEY $api_key > foo
+      - run:
+          command: cat foo      
       - nirmata/delete_catalog_app_command:
           app_name: "circlecitest1"
           nirmata_server: "nirmata.io"
