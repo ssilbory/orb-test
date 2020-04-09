@@ -35,5 +35,4 @@ jobs:
           env_name: "circle-demo1"
       - nirmata/delete_env_command:
           env_name: "prod-dev"
-          app_name: "circlecitest1"
           nirmata_server: "nirmata.io"
