@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  nirmata: nirmata/nirmata-test@2.9.5
+  nirmata: nirmata/nirmata-test@2.9.9
 jobs:
   build:
     docker:
@@ -12,6 +12,11 @@ jobs:
           yaml_file: "nginx.yml"
           nirmata_server: "nirmata.io"
           catalog : "circlecitest"
+      - nirmata/create_env_command:
+          env_name: "circle-demo"
+          cluster_name: "sam-test-conf"
+          type: "large"
+          nirmata_server: "nirmata.io"
       - nirmata/deploy_command:
           app_name: "circlecitest1"
           app_name_deploy: "circlecitest1"
@@ -19,7 +24,7 @@ jobs:
           env_name: "circle-demo"
           catalog : "circlecitest"
       - run:
-          command: env
+          command: sleep 30
       - nirmata/delete_catalog_app_command:
           app_name: "circlecitest1"
           nirmata_server: "nirmata.io"
@@ -28,3 +33,7 @@ jobs:
           app_name: "circlecitest1"
           nirmata_server: "nirmata.io"
           env_name: "circle-demo"
+      - nirmata/delete_env_command:
+          nirmata_server: "nirmata.example.com"
+          env_name: "prod-dev"
+          cluster_name: "dev"
