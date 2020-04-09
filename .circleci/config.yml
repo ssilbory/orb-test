@@ -7,7 +7,7 @@ jobs:
       - image: circleci/python
     steps:
       - checkout
-      - nirmata/add_catlog_app_command:
+      - nirmata/add_catalog_app_command:
           app_name: "circlecitest1"
           yaml_file: "nginx.yml"
           nirmata_server: "nirmata.io"
